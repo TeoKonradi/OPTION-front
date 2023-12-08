@@ -4,11 +4,6 @@
   "singleQuote": false,
   "printWidth": 90,
   "tabWidth": 2,
-  "plugins": [
-    "prettier-plugin-tailwindcss"
-  ],
-  "tailwindFunctions": [
-    "cn",
-    "clsx"
-  ]
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindFunctions": ["cn", "clsx"]
 }
