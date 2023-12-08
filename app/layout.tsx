@@ -1,11 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '../globals.css';
-import { Provider } from 'react-redux';
-import store from '../store/rootReducer';
-import { ClientProviders } from '@/{ lib }/ClientProvider';
-import { Protected } from '@/components/Protected';
-import Bar from '@/components/Bar';
+import './globals.css';
+import ProviderLayout from './( protected )/layout';
+
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,18 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider store={store}>
-          <ClientProviders>
-            <main className="w-full flex justify-center bg-white font-HandJet">
-              <div className="w-full max-w-[1300px] flex-col gap-4 flex">
-                <Bar />
-                <Protected>
-                  {children}
-                </Protected>
-              </div>
-            </main>
-          </ClientProviders>
-        </Provider>
+        <ProviderLayout>
+          {children}
+        </ProviderLayout>
       </body>
     </html>
   );
