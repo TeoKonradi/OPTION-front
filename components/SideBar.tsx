@@ -1,12 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { SideBarOption } from "../{ lib }/consts";
+import { SideBarOption } from "../lib/consts";
 import { Button } from "./ui/button";
 import { toggleScrollState } from "../store/ToogleScrollSlice";
 import { useDispatch } from "react-redux";
 import { cn } from "./ui";
-import { useLogout } from "../{ lib }/( api )";
+import { useLogout } from "../lib/api";
 import { setIsNotLogged } from "../store/LoginStatus";
 
 const SideBar = () => {

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { RootState } from "../store/rootReducer";
 import { handleDeletePress } from "../store/OptionsBarSlice";
 import { resetSelectedItems } from "../store/itemsListSlice";
-import { OptionsBarEl } from "../{ lib }/consts";
+import { OptionsBarEl } from "../lib/consts";
 import { toggleScrollState } from "../store/ToogleScrollSlice";
 
 const OptionsBar = () => {

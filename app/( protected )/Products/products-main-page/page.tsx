@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link';
 import { Button } from '../../../../components/ui/button';
-import { useProducts } from '../../../../{ lib }/( api )';
+import { useProducts } from '../../../../lib/api';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { initializeItemsOptionBar } from '../../../../store/OptionsBarSlice';

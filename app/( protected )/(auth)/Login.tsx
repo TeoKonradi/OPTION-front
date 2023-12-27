@@ -6,7 +6,7 @@ import * as z from "zod";
 
 import { LoadingButton } from "../../../components/ui/button";
 import { Form } from "../../../components/ui/form";
-import { useLogin } from "../../../{ lib }/( api )";
+import { useLogin } from "../../../lib/api";
 import { InputField } from "../../../components/customUI/InputFields/InputField";
 import { useDispatch } from "react-redux";
 import { setIsLogged } from "../../../store/LoginStatus";

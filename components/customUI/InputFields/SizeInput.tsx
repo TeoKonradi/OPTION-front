@@ -3,7 +3,7 @@ import { FormControl, FormField, FormItem, FormMessage } from "../../ui/form";
 import { Input } from "../../ui/input";
 import { Button } from "../../ui/button";
 import { useEffect } from "react";
-import { ProductSize } from "../../../{ lib }/( api )";
+import { ProductSize } from "../../../lib/api";
 
 export const SizeInputs = ({ ...props }) => {
   const isLoading = props.isLoading;

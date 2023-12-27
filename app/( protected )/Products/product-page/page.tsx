@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect } from 'react';
-import { useCurrentProduct } from '../../../../{ lib }/( api )';
+import { useCurrentProduct } from '../../../../lib/api';
 import { initializeItemsOptionBar } from '../../../../store/OptionsBarSlice';
 import {
   ErrorEmptyStatus,

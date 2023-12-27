@@ -14,8 +14,9 @@ Add SSR globally
 
 Add all text for Errors diffrent types & condidtions
 
-Add oprion for sudo and for admins change others permission
+Add option for sudo and for admins change others permission
 & add text explanation wtf is mean this permission ( on the list and on the create new admin or other stuff account stady )
+
 Add range system
 
 Add Distribution, for current linked site ( AP )

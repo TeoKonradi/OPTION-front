@@ -1,6 +1,6 @@
 "use client"
 import { Button } from '../../../../components/ui/button';
-import { useBrands } from '../../../../{ lib }/( api )';
+import { useBrands } from '../../../../lib/api';
 import { useEffect } from 'react';
 import { initializeItemsOptionBar } from '../../../../store/OptionsBarSlice';
 import { useDispatch } from 'react-redux';

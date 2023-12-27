@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ProductSize } from "../{ lib }/( api )";
+import { ProductSize } from "../lib/api";
 
 interface Size {
   sizes: ProductSize[];

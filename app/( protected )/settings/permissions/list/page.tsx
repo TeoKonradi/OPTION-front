@@ -9,10 +9,10 @@ import { ListContainer2 } from '../../../../../components/customUI/ListItem2';
 import { RootState } from '../../../../../store/rootReducer';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { usePermissions } from '../../../../../{ lib }/( api )';
+import { usePermissions } from '../../../../../lib/api';
 import { initializeItems4List } from '../../../../../store/itemsListSlice';
 import { initializeItemsOptionBar } from '../../../../../store/OptionsBarSlice';
-import { OptionsBarEl } from '../../../../../{ lib }/consts';
+import { OptionsBarEl } from '../../../../../lib/consts';
 
 const PermissionsPage = () => {
   const dispatch = useDispatch();

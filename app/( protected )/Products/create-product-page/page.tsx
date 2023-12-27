@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 import {
   ProductCreationRequest,
   useCreateProduct,
-} from '../../../../{ lib }/( api )';
+} from '../../../../lib/api';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { resetFiles } from '../../../../store/FilesSlice';

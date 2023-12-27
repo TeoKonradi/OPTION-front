@@ -1,7 +1,7 @@
 "use client"
 import Bar from '@/components/Bar'
 import { Protected } from '@/components/Protected'
-import { ClientProviders } from '@/{ lib }/ClientProvider'
+import { ClientProviders } from '@/lib/ClientProvider'
 import React from 'react'
 import { Provider } from 'react-redux'
 import store from '../../store/rootReducer';

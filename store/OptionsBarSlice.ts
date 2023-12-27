@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { OptionsBarEl } from "../{ lib }/consts";
+import { OptionsBarEl } from "../lib/consts";
 
 type OptionsBarState = {
   items: OptionsBarEl[];

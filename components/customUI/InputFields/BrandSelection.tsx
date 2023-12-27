@@ -1,5 +1,5 @@
 import { useFormContext } from "react-hook-form";
-import { useBrands, Brand } from "../../../{ lib }/( api )";
+import { useBrands, Brand } from "../../../lib/api";
 import { ErrorEmptyStatus, Loading } from "../Errors&Messages/Error&otherStuff";
 import { cn } from "../../ui";
 

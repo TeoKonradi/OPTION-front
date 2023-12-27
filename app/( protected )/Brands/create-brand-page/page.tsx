@@ -9,7 +9,7 @@ import { LoadingButton } from '../../../../components/ui/button';
 import { Form } from '../../../../components/ui/form';
 import { FileUploaderBeta } from '../../../../components/customUI/InputFields/FileUploader';
 import { useEffect } from 'react';
-import { useCreateBrand } from '../../../../{ lib }/( api )';
+import { useCreateBrand } from '../../../../lib/api';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../store/rootReducer';
 import { useRouter } from 'next/router';

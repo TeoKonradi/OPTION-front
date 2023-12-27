@@ -1,8 +1,7 @@
 # Form widget
 Json
 
-```json
-{
+const form = {
   "widget": "form",
   "object": "user",
   "actions": [
@@ -606,13 +605,11 @@ Json
     }
   ]
 }
-```
+
 
 # Huh
 
-## Field
-```json
-{
+const second = {
   "field": "date_time_field",
   "blank": true,
   "read_only": true,
@@ -626,7 +623,6 @@ Json
   },
   "val": "2023-08-15 19:29:02.42501+00"
 }
-```
 
 
 auto_field

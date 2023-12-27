@@ -2,8 +2,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { RootState } from '../../../../store/rootReducer';
-import { useDeleteProduct, useProducts } from '../../../../{ lib }/( api )';
-import { OptionsBarEl } from '../../../../{ lib }/consts';
+import { useDeleteProduct, useProducts } from '../../../../lib/api';
+import { OptionsBarEl } from '../../../../lib/consts';
 import { initializeItems4List } from '../../../../store/itemsListSlice';
 import {
   initializeItemsOptionBar,

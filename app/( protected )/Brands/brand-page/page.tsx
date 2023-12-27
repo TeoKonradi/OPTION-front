@@ -1,7 +1,7 @@
 "use client"
 
 import { useDispatch } from 'react-redux';
-import { useCurrentBrand } from '../../../../{ lib }/( api )';
+import { useCurrentBrand } from '../../../../lib/api';
 import { useEffect } from 'react';
 import { initializeItemsOptionBar } from '../../../../store/OptionsBarSlice';
 import {
