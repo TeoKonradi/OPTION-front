@@ -1,4 +1,13 @@
-// ### Actions
+// Actions
+
+// link
+
+//     {
+//       "type": "link",
+//       "name": {"eng": "Add", "lng": "Add"},
+//       "query": false,
+//       "val": "users/create"
+//     }
 
 export interface ListLink{
   type: "link", 
@@ -15,7 +24,16 @@ export interface ListLink{
 // - `query` - does action work for single object, of for the `query` list of objects, always `false`
 // - `val` - link to redirect
 
-// #### request
+// request
+
+//     {
+//       "type": "request",
+//       "name": {"eng": "Delete", "lng": "Delete"},
+//       "query": true,
+//       "request_path": "users/del",
+//       "request_type": "post",
+//       "request_val": ["id"]
+//     }
 
 export interface ListRequest {
 type: "request"; 
@@ -36,35 +54,23 @@ request_val: string[]
 // - `request_type` - api request type, may be `get`/`post`/`put`
 // - `request_val` - request required fields for each object from `query`, all available object field you may find at `content_type`(widget object)
 
+////////////////////////////////////////////////////////////////
 
-export interface ListContent {
-[key: string]: Type;
-}
-
-interface Type {
-key: string;
-type: string | int | float | boolean | time | date | link;
-}
-
-// Example usage:
-const content: ListContent = {
-id: { key: "int", type: "int" },
-username: { key: "string", type: "string" },
-super_user: { key: "bool", type: "bool" },
-staff_user: { key: "bool", type: "bool" },
-last_login: { key: "date", type: "date" },
-};
-
-
-// ### Content_type
+// Content_type
 // Json with the all types of content, each one have `key` and `type`
 
-const item = {
-"id": "int", 
-"username": "string", 
-"super_user": "bool", 
-"staff_user": "bool", 
-"last_login": "date"
+// Example
+// {
+// "id": "int", 
+// "username": "string", 
+// "super_user": "bool", 
+// "staff_user": "bool", 
+// "last_login": "date"
+// }
+
+interface ListContent {
+  id: number;
+  [key: string]: any;
 }
 
 // - `key` - only string value, any length
@@ -79,46 +85,74 @@ const item = {
 // - `date` - full date with time, format `{{yyyy}}-{{MM}}-{{dd}} {{HH}}:{{mm}}:{{ss}}.{{SSSSS}}+{{ZZ}}`(`2023-08-15 19:29:02.42501+00`)(`yyyy` - year, `MM` - month, `dd` - day)
 // - `link` - link path
 
+// Pagination
 
-export interface List{
-  widget: "list",
-  object: string,
-  actions: [
-    {
-      type: "link",
-      name: {"eng": "Add", "lng": "Add"},
-      query: false,
-      val: "users/create"
-    },
-    {
-      type: "request",
-      name: {"eng": "Delete", "lng": "Delete"},
-      query: true,
-      request_path: "users/del",
-      request_type: "post",
-      request_val: ["id"]
-    }
-  ],
-  content_type: {
-    id: "int",
-    username: "string",
-    super_user: "bool",
-    staff_user: "bool",
-    last_login: "date"
-    },
-  content: [
-    {
-      id: 1,
-      username: "notadmin",
-      super_user: false,
-      staff_user: true,
-      last_login: "2023-08-15 19:29:02.42501+00"
-    }  
-  ],  pagination: {
-    pagination: true,
-    page: 1,
-    pages: 10
-  }
+//   {
+//     "pagination": true,
+//     "page": 1,
+//     "pages": 10
+//   }
+
+
+interface ListPagination {
+  pagination: boolean,
+  page: number,
+  pages: number,
+}
+
+////////////////////////////////
+
+// Full element
+
+// {
+//   "widget": "list",
+//   "object": "users",
+//   "actions": [
+//     {
+//       "type": "link",
+//       "name": {"eng": "Add", "lng": "Add"},
+//       "query": false,
+//       "val": "users/create"
+//     },
+//     {
+//       "type": "request",
+//       "name": {"eng": "Delete", "lng": "Delete"},
+//       "query": true,
+//       "request_path": "users/del",
+//       "request_type": "post",
+//       "request_val": ["id"]
+//     }
+//   ],
+//   "content_type": {
+//     "id": "int",
+//     "username": "string",
+//     "super_user": "bool",
+//     "staff_user": "bool",
+//     "last_login": "date"
+//     },
+//   "content": [
+//     {
+//       "id": 1,
+//       "username": "notadmin",
+//       "super_user": false,
+//       "staff_user": true,
+//       "last_login": "2023-08-15 19:29:02.42501+00"
+//     }
+//   ],
+//   "pagination": {
+//     "pagination": true,
+//     "page": 1,
+//     "pages": 10
+//   }
+// }
+
+export interface ListItem{
+  widget: "list";
+  object: string;
+  actions: ListLink[] | ListRequest[] | ListLink[] & ListRequest[];
+  content_type: ListContent;
+  content: ListContent[];
+  pagination: ListPagination
 }
 
 // ## Explanation
