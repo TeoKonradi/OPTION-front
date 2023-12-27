@@ -37,7 +37,6 @@ interface ListContent {
 //     "pages": 10
 //   }
 
-
 interface ListPagination {
   pagination: boolean,
   page: number,
