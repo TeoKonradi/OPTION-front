@@ -1,7 +1,18 @@
 // Connection looks like: `{{protocol}}://{{domain}}/api/v1/admin/`
 
+import { Name } from "../interfaces/common";
+
 // ## Ping
 // Address: `{{connection}}/ping`
+
+export interface ProtocolPing { 
+  status: "success" | "not_success";
+  version: string;
+  domain: string;
+  ssl: boolean;
+  active: boolean;
+  extensions: any[] ;
+}
 
 // Answer: `200` 
 // ```json
@@ -21,6 +32,8 @@
 // - `ssl` - does backend have ssl
 // - `active` - does CRM is active now, if not, than show error
 // - `extensions` - list of the extensions that frontend must have, if it doesn't have it all them show error
+
+
 
 // ## Sidebar
 // Address: `{{connection}}/sidebar`
@@ -51,6 +64,25 @@
 //   }
 // ]
 // ```
+
+export interface SideBarPage{
+  place?: number;
+  type: "page";
+  path: string;
+  name: Name;
+  accesses: any[];
+  }
+
+export interface SideBarGroup {
+    type: "group";
+    path: string;
+    name: Name;
+    accesses: any[];
+    // page with number ))
+    pages: SideBarPage[];
+  }
+
+
 // ### Explanation
 // - `type` - object type, may be either or `page` or either `group` of pages
 // - `path` - page/group path

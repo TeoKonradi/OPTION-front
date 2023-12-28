@@ -1,86 +1,117 @@
-# Authentication
+// # Authentication
 
-## Permissions
-Address: `{{connection}}/auth/permissions` [GET]
-Answer `200`, `json`
-```json
-["permission"]
-```
+import { Group, Permission } from "../interfaces/common";
+
+// ## Permissions
+// Address: `{{connection}}/auth/permissions` [GET]
+// Answer `200`, `json`
+// ```json
+// ["permission"]
+// ```
 
 
-## Login
-Address: `{{connection}}/auth/login` [POST]
-
-Standard owner login is password is "admin", "admin"
-
-Require: `json`
-```json
-{
-  "username": "USERNAME",
-  "password": "PASSWORD"
+export interface Login {
+  username: string;
+  password: string;
 }
-```
+// ## Login
+// Address: `{{connection}}/auth/login` [POST]
+// Standard owner login is password is "admin", "admin"
+// Require: `json`
+// ```json
+// {
+//   "username": "USERNAME",
+//   "password": "PASSWORD"
+// }
+// ```
 
-Answer: `200`, `COOKIE` & `json`
-```json
-{
-    "refresh_token": "REFRESH_TOKEN",
-    "access_token": "ACCESS_TOKEN"
+export interface LoginRes{
+  refresh_token: string;
+  access_token: string;
+
 }
-```
+// Answer: `200`, `COOKIE` & `json`
+// ```json
+// {
+//     "refresh_token": "REFRESH_TOKEN",
+//     "access_token": "ACCESS_TOKEN"
+// }
+// ```
 
-## Logout
-Address: `{{connection}}/auth/logout` [GET]
-Answer: `200`, `COOKIE` & `json`
-```json
-{
-    "refresh_token": "log out",
-    "access_token": "log out"
+export interface LogOutRes{
+  refresh_token: string;
+  access_token: string;
+
 }
-```
+// ## Logout
+// Address: `{{connection}}/auth/logout` [GET]
+// Answer: `200`, `COOKIE` & `json`
+// ```json
+// {
+//     "refresh_token": "log out",
+//     "access_token": "log out"
+// }
+// ```
 
-## Refresh
-Address: `{{connection}}/auth/me/refresh` [GET]
-Require: `LOGIN`
-Answer: `200`, `COOKIE` & `json`
-```json
-{
-    "refresh_token": "REFRESH_TOKEN"
+export interface Refresh{
+  refresh_token: string;
 }
-```
+// ## Refresh
+// Address: `{{connection}}/auth/me/refresh` [GET]
+// Require: `LOGIN`
+// Answer: `200`, `COOKIE` & `json`
+// ```json
+// {
+//     "refresh_token": "REFRESH_TOKEN"
+// }
+// ```
 
-## Me
-Address: `{{connection}}/auth/me` [GET]
-Require: `LOGIN`
-Answer: `200`, `COOKIE` & `json`
-```json
-{
-  "username": "admin",
-  "is_active": true,
-  "is_staff": true,
-  "is_super_user": true,
-  "last_login": 1694253508,
-  "register": 1694235994,
-  "permissions": ["permission"],
-  "groups": []
+export interface MeRequest{
+  // set existing rules
+  username: "admin" | "sudo";
+  is_active: boolean;
+  is_staff: boolean;
+  is_super_user: boolean;
+  last_login: number;
+  register: number;
+  permissions: Permission[];
+  groups: Group[];
 }
-```
-Permissions field already include all groups permissions
+// ## Me
+// Address: `{{connection}}/auth/me` [GET]
+// Require: `LOGIN`
+// Answer: `200`, `COOKIE` & `json`
+// ```json
+// {
+//   "username": "admin",
+//   "is_active": true,
+//   "is_staff": true,
+//   "is_super_user": true,
+//   "last_login": 1694253508,
+//   "register": 1694235994,
+//   "permissions": ["permission"],
+//   "groups": []
+// }
+// ```
+// Permissions field already include all groups permissions
 
-## Change password
-Address: `{{connection}}/auth/change/password` [GET]
+// ## Change password
+// Address: `{{connection}}/auth/change/password` [GET]
 
-Require: `LOGIN` & `json`
-```json
-{
-  "old_password": "OLD_PASSWORD",
-  "password": "PASSWORD"
+// Require: `LOGIN` & `json`
+// ```json
+// {
+//   "old_password": "OLD_PASSWORD",
+//   "password": "PASSWORD"
+// }
+// ```
+export interface ChangePass{
+  old_password: string;
+  password: string;
 }
-```
-
-Answer: `200`, `json`
-```json
-{
-  "status": "success"
-}
-```
+// Answer: `200`, `json`
+// ```json
+// {
+//   "status": "success"
+// }
+// ```

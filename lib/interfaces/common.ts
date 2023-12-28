@@ -1,3 +1,10 @@
+// Name
+
+export interface Name {
+  eng: string;
+  lng: string;
+}
+
 // Actions
 
 // link
@@ -10,12 +17,9 @@
 //     }
 
 export interface ActionLink{
-  type: "link", 
-  name: {
-    eng: string, 
-    lng: string
-  };
-  query: boolean; 
+  type: "link";
+  name: Name
+  query: false; 
   val: string;
 }
 
@@ -37,12 +41,20 @@ export interface ActionLink{
 
 export interface ActionRequest {
 type: "request"; 
-name: {
-  eng: string, 
-  lng: string
-}, 
+name: Name
 query: true, 
 request_path: string, 
 request_type: "post" | "get", 
 request_val: string[]
+}
+
+
+// Permission
+export interface Permission{
+  permission: string;
+}
+
+// Group
+export interface Group{
+  group: any;
 }
