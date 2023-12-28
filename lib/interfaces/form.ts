@@ -36,7 +36,9 @@ export interface FORM{
 
 // {
 //   "widget": "form",
+
 //   "object": "user",
+
 //   "actions": [
 //     {
 //       "type": "link",
@@ -61,7 +63,24 @@ export interface FORM{
 //       ]
 //     }
 //   ],
+
 //   "form": [
+
+export interface AutoField {
+      field: "auto_field",
+      blank: boolean,
+      read_only: boolean,
+      default: number,
+      editable: boolean,
+      help_text: string,
+      unique: boolean,
+      name: {
+        "eng": "ID",
+        "lng": "ID"
+      },
+      val: number
+}
+
 //     {
 //       "field": "auto_field",
 //       "blank": false,
@@ -76,6 +95,22 @@ export interface FORM{
 //       },
 //       "val": 1
 //     },
+
+export interface DateTimeField {
+  field: "date_time_field",
+  blank: boolean,
+  read_only: boolean,
+  default: string,
+  editable: boolean,
+  help_text: string,
+  unique: boolean,
+  name: {
+    "eng": "ID",
+    "lng": "ID"
+  };
+  val: string | null
+}
+
 //     {
 //       "field": "date_time_field",
 //       "blank": true,
@@ -90,6 +125,7 @@ export interface FORM{
 //       },
 //       "val": "2023-08-15 19:29:02.42501+00"
 //     },
+
 //     {
 //       "field": "date_time_field",
 //       "blank": true,
@@ -104,6 +140,7 @@ export interface FORM{
 //       },
 //       "val": "2023-08-15 19:29:02.42501+00"
 //     },
+
 //     {
 //       "field": "date_time_field",
 //       "blank": true,
@@ -118,6 +155,21 @@ export interface FORM{
 //       },
 //       "val": null
 //     },
+
+export interface CharField {
+  field: "char_field",
+  blank: boolean,
+  read_only: boolean,
+  default: string,
+  editable: boolean,
+  help_text: string,
+  unique: boolean,
+  name: {
+    "eng": "ID",
+    "lng": "ID"
+  },
+  val: string
+}
 //     {
 //       "field": "char_field",
 //       "blank": false,
@@ -132,6 +184,7 @@ export interface FORM{
 //       },
 //       "val": "notadmin"
 //     },
+
 //     {
 //       "field": "char_field",
 //       "blank": false,
@@ -146,6 +199,22 @@ export interface FORM{
 //       },
 //       "val": "PASSWORD HASH"
 //     },
+
+export interface ListField {
+  field: "char_field",
+  blank: boolean,
+  read_only: boolean,
+  default: [],
+  editable: boolean,
+  help_text: string,
+  unique: boolean,
+  name: {
+    "eng": "ID",
+    "lng": "ID"
+  },
+  val: string
+}
+
 //     {
 //       "field": "list_field",
 //       "list_field": "char_field",
@@ -176,6 +245,7 @@ export interface FORM{
 //         }
 //       ]
 //     },
+
 //     {
 //       "field": "bool_field",
 //       "blank": false,
@@ -190,6 +260,7 @@ export interface FORM{
 //       },
 //       "val": true
 //     },
+
 //     {
 //       "field": "bool_field",
 //       "blank": false,
@@ -204,6 +275,7 @@ export interface FORM{
 //       },
 //       "val": true
 //     },
+
 //     {
 //       "field": "bool_field",
 //       "blank": false,
@@ -218,6 +290,7 @@ export interface FORM{
 //       },
 //       "val": false
 //     },
+
 //     {
 //       "field": "list_field",
 //       "blank": true,
@@ -243,7 +316,8 @@ export interface FORM{
 //             "eng": "admin_permissions_group",
 //             "lng": "admin_permissions_group"
 //           },
-//           "val": {"widget": "form",
+//           "val": {
+//             "widget": "form",
 //             "object": "user",
 //             "actions": [
 //               {
@@ -350,6 +424,7 @@ export interface FORM{
 //         }
 //       ]
 //     },
+
 //     {
 //       "field": "list_field",
 //       "list_field": "sub_form_field",
@@ -493,6 +568,7 @@ export interface FORM{
 //         }
 //       ]
 //     },
+
 //     {
 //       "field": "list_field",
 //       "list_field": "sub_form_field",
