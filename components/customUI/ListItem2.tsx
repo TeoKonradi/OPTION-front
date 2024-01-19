@@ -1,24 +1,24 @@
+import { nanoid } from "@reduxjs/toolkit";
+import { Check } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Check } from "lucide-react";
-import { Separator } from "../ui/separator";
-import { useRouter } from "next/router";
-import { cn } from "../ui";
 
 import { toggleItemSelection } from "../../store/itemsListSlice";
-import { nanoid } from "@reduxjs/toolkit";
-import { usePathname } from "next/navigation";
+import { cn } from "../ui";
+import { Separator } from "../ui/separator";
 
 type GenericObject = {
   [key: string]: any;
+  ID?: number | string;
+  id?: number | string;
   selected: boolean;
-  id?: string | number;
-  ID?: string | number;
 };
 
 interface OptionsStatus {
-  toggleStatus: boolean;
   clickStatus: boolean;
+  toggleStatus: boolean;
 }
 
 interface ListItemProps {
@@ -26,9 +26,9 @@ interface ListItemProps {
 }
 
 const ListItem2: React.FC<ListItemProps & OptionsStatus> = ({
+  clickStatus,
   item,
   toggleStatus,
-  clickStatus,
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -54,25 +54,25 @@ const ListItem2: React.FC<ListItemProps & OptionsStatus> = ({
   return (
     <div
       className={cn(
-        "flex w-full shadow-lg h-full items-center justify-start border-2 border-main min-h-[48px]"
+        "flex h-full min-h-[48px] w-full items-center justify-start border-2 border-main shadow-lg",
       )}
     >
       <div
         className={cn(
           toggleStatus &&
-            "border-r-2 border-main h-full flex justify-center items-center w-12 cursor-pointer",
-          item.selected && "bg-main"
+            "flex h-full w-12 cursor-pointer items-center justify-center border-r-2 border-main",
+          item.selected && "bg-main",
         )}
         onClick={handleToggle}
       >
         {toggleStatus && <Check color={item.selected ? "white" : "black"} />}
       </div>
       <div
-        onClick={catchClick}
         className={cn(
-          "flex items-center gap-8 pl-6 w-full text-2xl",
-          clickStatus && "cursor-pointer"
+          "flex w-full items-center gap-8 pl-6 text-2xl",
+          clickStatus && "cursor-pointer",
         )}
+        onClick={catchClick}
       >
         {Object.entries(item)
           .filter(([key]) => key !== "id" && key !== "selected")
@@ -81,10 +81,7 @@ const ListItem2: React.FC<ListItemProps & OptionsStatus> = ({
             <React.Fragment key={key}>
               <div className="">{String(value).slice(0, 20)}</div>
               {index !== array.length - 1 && (
-                <Separator
-                  className="w-[2px] bg-main h-6"
-                  orientation="vertical"
-                />
+                <Separator className="h-6 w-[2px] bg-main" orientation="vertical" />
               )}
             </React.Fragment>
           ))}
@@ -98,22 +95,22 @@ interface ListContainerProps {
 }
 
 const ListContainer2: React.FC<ListContainerProps & OptionsStatus> = ({
+  clickStatus,
   items,
   toggleStatus,
-  clickStatus,
 }) => {
   return (
     <div className="flex flex-col gap-3 pb-4 pr-6">
       {items.map((item, index) => (
         <ListItem2
-          key={item.id || index}
-          item={item}
-          toggleStatus={toggleStatus}
           clickStatus={clickStatus}
+          item={item}
+          key={item.id || index}
+          toggleStatus={toggleStatus}
         />
       ))}
     </div>
   );
 };
 
-export { ListItem2, ListContainer2 };
+export { ListContainer2, ListItem2 };

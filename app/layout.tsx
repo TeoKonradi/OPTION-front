@@ -1,27 +1,23 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import ProviderLayout from './( protected )/layout';
+import type { Metadata } from "next";
 
+import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'] });
+import ProviderLayout from "./(protected)/layout";
+
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'OPTION',
-  description: 'We just made it',
+  description: "We just made it",
+  title: "OPTION",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ProviderLayout>
-          {children}
-        </ProviderLayout>
+        <ProviderLayout>{children}</ProviderLayout>
       </body>
     </html>
   );

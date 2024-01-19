@@ -1,19 +1,20 @@
 // ... (other imports)
 import { ChangeEvent, useRef } from "react";
-import { RootState } from "../../../store/rootReducer";
-import { addFileUrl, removeFileUrl } from "../../../store/FilesSlice";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
+import { addFileUrl, removeFileUrl } from "../../../store/FilesSlice";
+import { RootState } from "../../../store/rootReducer";
 import { Button } from "../../ui/button";
 
 interface FileUploaderProps {
+  fileType: "file" | "picture";
   id?: string;
   isMultiple?: boolean;
-  fileType: "picture" | "file";
 }
 
 export const FileUploaderBeta: React.FC<FileUploaderProps> = (props) => {
-  const parseFileType = (fileType: "picture" | "file") => {
+  const parseFileType = (fileType: "file" | "picture") => {
     switch (fileType) {
       case "picture":
         return ".jpeg, .png, .jpg";
@@ -55,20 +56,17 @@ export const FileUploaderBeta: React.FC<FileUploaderProps> = (props) => {
   };
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex w-full flex-col">
       <div className="flex flex-col items-end gap-5 [&>*:nth-last-child(-n+1)]:mb-5">
         {files.map((imageUrl: string) => (
-          <div
-            key={imageUrl}
-            className="w-96 relative shadow-sm"
-          >
+          <div className="relative w-96 shadow-sm" key={imageUrl}>
             <img
-              src={imageUrl}
-              className="object-cover object-center"
               alt={`image-${imageUrl}`}
+              className="object-cover object-center"
+              src={imageUrl}
             />
             <Button
-              className="absolute top-0 right-0 w-8 h-8 bg-main text-white text-4xl"
+              className="absolute right-0 top-0 h-8 w-8 bg-main text-4xl text-white"
               onClick={() => removeImage(imageUrl)}
             >
               <div className="rotate-45">+</div>
@@ -78,20 +76,20 @@ export const FileUploaderBeta: React.FC<FileUploaderProps> = (props) => {
       </div>
       <div className="w-full">
         <Button
-          type="button"
           className="w-full"
           onClick={handleClick}
           style={{ fontSize: `5vh` }}
+          type="button"
         >
           +
           <input
-            id={props.id}
             accept={parseFileType(props.fileType)}
-            ref={inputRef}
-            onChange={handleChange}
-            multiple={props.isMultiple}
             disabled={isDisabled()}
-            style={{ visibility: "hidden", display: "none" }}
+            id={props.id}
+            multiple={props.isMultiple}
+            onChange={handleChange}
+            ref={inputRef}
+            style={{ display: "none", visibility: "hidden" }}
             type="file"
           />
         </Button>

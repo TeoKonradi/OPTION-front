@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const PageDescSlice = createSlice({
-  name: "PageDesc",
   initialState: false,
+  name: "PageDesc",
   reducers: {},
 });
 

@@ -1,14 +1,14 @@
 export interface InputProps {
   placeholder?: string;
-  value?: string;
   ref?: any;
   required?: boolean;
+  value?: string;
 }
 
 export interface FieldProps extends InputProps {
-  isLoading: boolean;
-  name: string;
   autoComplete?: string;
   disabled?: boolean;
+  isLoading: boolean;
+  name: string;
   type?: string;
 }

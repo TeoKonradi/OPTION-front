@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
 import { ProductSize } from "../lib/api";
 
 interface Size {
@@ -6,13 +7,13 @@ interface Size {
 }
 
 const SizesSlice = createSlice({
-  name: "Sizes",
   initialState: {
-    sizes: [{ size: "", available_now: 0 }],
+    sizes: [{ available_now: 0, size: "" }],
   } as Size,
+  name: "Sizes",
   reducers: {
     addSize: (state) => {
-      state.sizes.push({ size: "", available_now: 0 });
+      state.sizes.push({ available_now: 0, size: "" });
     },
     removeSize: (state, action: PayloadAction<number>) => {
       state.sizes.splice(action.payload, 1);
@@ -22,8 +23,8 @@ const SizesSlice = createSlice({
       action: PayloadAction<{
         index: number;
         name: keyof ProductSize;
-        value: string | number;
-      }>
+        value: number | string;
+      }>,
     ) => {
       const { index, name, value } = action.payload;
       if (name === "size") {

@@ -3,17 +3,16 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'handJet';
-  src: url('/fonts/Handjet.ttf');
+  font-family: "handJet";
+  src: url("/fonts/Handjet.ttf");
 }
 
 @font-face {
-  font-family: 'HandJet';
-  src: url('/fonts/HandleJETTT/HandjetFlowerDouble-Medium.eot');
-  src:
-    url('/fonts/HandleJETTT/HandjetFlowerDouble-Medium.woff') format('woff'),
-    url('/fonts/HandleJETTT/HandjetFlowerDouble-Medium.woff') format('woff2'),
-    url('/fonts/HandleJETTT/HandjetFlowerDouble-Medium.ttf') format('ttf');
+  font-family: "HandJet";
+  src: url("/fonts/HandleJETTT/HandjetFlowerDouble-Medium.eot");
+  src: url("/fonts/HandleJETTT/HandjetFlowerDouble-Medium.woff") format("woff"),
+    url("/fonts/HandleJETTT/HandjetFlowerDouble-Medium.woff") format("woff2"),
+    url("/fonts/HandleJETTT/HandjetFlowerDouble-Medium.ttf") format("ttf");
 }
 
 @layer base {

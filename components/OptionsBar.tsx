@@ -1,10 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { RootState } from "../store/rootReducer";
-import { handleDeletePress } from "../store/OptionsBarSlice";
-import { resetSelectedItems } from "../store/itemsListSlice";
+import { useDispatch, useSelector } from "react-redux";
+
 import { OptionsBarEl } from "../lib/consts";
+import { handleDeletePress } from "../store/OptionsBarSlice";
 import { toggleScrollState } from "../store/ToogleScrollSlice";
+import { resetSelectedItems } from "../store/itemsListSlice";
+import { RootState } from "../store/rootReducer";
 
 const OptionsBar = () => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const OptionsBar = () => {
   const OptionElement = ({ props }: { props: OptionsBarEl }) => {
     return (
       <div
-        className="py-1 px-2 text-xl border-2 cursor-pointer select-none border-main active:text-white active:bg-main"
+        className="cursor-pointer select-none border-2 border-main px-2 py-1 text-xl active:bg-main active:text-white"
         onClick={() => handleOptionClick({ props })}
       >
         <h3 className="">{props.title}</h3>
@@ -47,12 +48,9 @@ const OptionsBar = () => {
   };
 
   return (
-    <div className="flex items-center p-3 gap-4">
+    <div className="flex items-center gap-4 p-3">
       {options.map((item: OptionsBarEl, index: number) => (
-        <OptionElement
-          props={item}
-          key={index}
-        />
+        <OptionElement key={index} props={item} />
       ))}
     </div>
   );

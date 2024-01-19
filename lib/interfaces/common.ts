@@ -16,10 +16,10 @@ export interface Name {
 //       "val": "users/create"
 //     }
 
-export interface ActionLink{
+export interface ActionLink {
+  name: Name;
+  query: false;
   type: "link";
-  name: Name
-  query: false; 
   val: string;
 }
 
@@ -40,21 +40,20 @@ export interface ActionLink{
 //     }
 
 export interface ActionRequest {
-type: "request"; 
-name: Name
-query: true, 
-request_path: string, 
-request_type: "post" | "get", 
-request_val: string[]
+  name: Name;
+  query: true;
+  request_path: string;
+  request_type: "get" | "post";
+  request_val: string[];
+  type: "request";
 }
 
-
 // Permission
-export interface Permission{
+export interface Permission {
   permission: string;
 }
 
 // Group
-export interface Group{
+export interface Group {
   group: any;
 }

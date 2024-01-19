@@ -1,5 +1,7 @@
 # List widget
+
 Json
+
 ```json
 {
   "widget": "list",
@@ -7,13 +9,13 @@ Json
   "actions": [
     {
       "type": "link",
-      "name": {"eng": "Add", "lng": "Add"},
+      "name": { "eng": "Add", "lng": "Add" },
       "query": false,
       "val": "users/create"
     },
     {
       "type": "request",
-      "name": {"eng": "Delete", "lng": "Delete"},
+      "name": { "eng": "Delete", "lng": "Delete" },
       "query": true,
       "request_path": "users/del",
       "request_type": "post",
@@ -26,7 +28,7 @@ Json
     "super_user": "bool",
     "staff_user": "bool",
     "last_login": "date"
-    },
+  },
   "content": [
     {
       "id": 1,
@@ -45,6 +47,7 @@ Json
 ```
 
 ## Explanation
+
 - `widget` - the widget type, always `list`
 - `object` - object type, need for request to backend on link `{{connection}}/widget/list/{{object}}`
 - `actions` - a list of actions for the list, more details below
@@ -53,31 +56,38 @@ Json
 - `pagination` - pagination data, more details below
 
 ### Actions
+
 List of actions for the list, not include standard one (i.e. back, refresh, etc)
+
 #### link
+
 ```json
 {
-  "type": "link", 
-  "name": {"eng": "Add", "lng": "Add"}, 
-  "query": false, 
+  "type": "link",
+  "name": { "eng": "Add", "lng": "Add" },
+  "query": false,
   "val": "users/create"
 }
 ```
+
 - `type` - type of the action, always `link`
 - `name` - name of the action, on english and setting language
 - `query` - does action work for single object, of for the `query` list of objects, always `false`
 - `val` - link to redirect
+
 #### request
+
 ```json
 {
-  "type": "request", 
-  "name": {"eng": "Delete", "lng": "Delete"}, 
-  "query": true, 
-  "request_path": "users/del", 
-  "request_type": "post", 
+  "type": "request",
+  "name": { "eng": "Delete", "lng": "Delete" },
+  "query": true,
+  "request_path": "users/del",
+  "request_type": "post",
   "request_val": ["id"]
 }
 ```
+
 - `type` - type of the action, always `link`
 - `name` - name of the action, on english and setting language
 - `query` - does action work for single object, of for the `query` list of objects, always `true`
@@ -86,20 +96,24 @@ List of actions for the list, not include standard one (i.e. back, refresh, etc)
 - `request_val` - request required fields for each object from `query`, all available object field you may find at `content_type`(widget object)
 
 ### Content_type
+
 Json with the all types of content, each one have `key` and `type`
+
 ```json
 {
-  "id": "int", 
-  "username": "string", 
-  "super_user": "bool", 
-  "staff_user": "bool", 
+  "id": "int",
+  "username": "string",
+  "super_user": "bool",
+  "staff_user": "bool",
   "last_login": "date"
 }
 ```
+
 - `key` - only string value, any length
 - `type` - type of the object, may be `string`/`int`/`float`/`bool`/`time`/`date`/`link`, more details below
 
 #### type
+
 - `string` - string, just string, length less than 255
 - `int` - integer
 - `float` - mathematical fraction

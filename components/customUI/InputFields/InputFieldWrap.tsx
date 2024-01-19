@@ -1,13 +1,13 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 export const InputFieldWrap = ({
   children,
-  title,
   space,
+  title,
 }: {
   children: ReactNode;
-  title: string;
   space?: number;
+  title: string;
 }) => {
   return (
     <div className="flex w-full">

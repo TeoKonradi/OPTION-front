@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
+
+import { ProductSize } from "../../../lib/api";
+import { Button } from "../../ui/button";
 import { FormControl, FormField, FormItem, FormMessage } from "../../ui/form";
 import { Input } from "../../ui/input";
-import { Button } from "../../ui/button";
-import { useEffect } from "react";
-import { ProductSize } from "../../../lib/api";
 
 export const SizeInputs = ({ ...props }) => {
   const isLoading = props.isLoading;
@@ -16,8 +17,8 @@ export const SizeInputs = ({ ...props }) => {
   const form = useFormContext<ProductForm>();
 
   const {
-    fields: fieldsSize,
     append: appendSize,
+    fields: fieldsSize,
     remove: removeSize,
   } = useFieldArray({
     control: form.control,
@@ -26,7 +27,7 @@ export const SizeInputs = ({ ...props }) => {
 
   useEffect(() => {
     if (fieldsSize.length === 0) {
-      appendSize({ size: "", available_now: 0 });
+      appendSize({ available_now: 0, size: "" });
     }
   }, [fieldsSize, appendSize]);
 
@@ -43,16 +44,13 @@ export const SizeInputs = ({ ...props }) => {
   return (
     <div className="grid gap-3">
       {fieldsSize.map((field, index) => (
-        <div
-          key={field.id}
-          className="flex gap-5 w-full justify-between"
-        >
+        <div className="flex w-full justify-between gap-5" key={field.id}>
           <FormField
             render={({ field: sizeField }) => (
-              <FormItem className="field-with-autofill flex w-1/2 flex-col shadow-xs border-2 border-main items-center justify-center bg-dark-800 px-5 py-1">
+              <FormItem className="field-with-autofill bg-dark-800 flex w-1/2 flex-col items-center justify-center border-2 border-main px-5 py-1 shadow-xs">
                 <FormControl>
                   <Input
-                    className="border-none px-0 placeholder:text-lg text-xl placeholder:text-dark-200 focus:caret-main py-0"
+                    className="placeholder:text-dark-200 border-none px-0 py-0 text-xl placeholder:text-lg focus:caret-main"
                     disabled={isLoading || disabled}
                     {...sizeField}
                     {...props}
@@ -73,10 +71,10 @@ export const SizeInputs = ({ ...props }) => {
               //   <Button type="button" onClick={() => decrementValue(index)}>
               //     -
               //   </Button>
-              <FormItem className="field-with-autofill flex w-1/2 flex-col shadow-xs border-2 border-main items-center justify-center bg-dark-800 px-5 py-1">
+              <FormItem className="field-with-autofill bg-dark-800 flex w-1/2 flex-col items-center justify-center border-2 border-main px-5 py-1 shadow-xs">
                 <FormControl>
                   <Input
-                    className="border-none px-0 placeholder:text-lg text-xl placeholder:text-dark-200 focus:caret-main py-0"
+                    className="placeholder:text-dark-200 border-none px-0 py-0 text-xl placeholder:text-lg focus:caret-main"
                     disabled={isLoading || disabled}
                     {...avaliable_nowField}
                     {...props}
@@ -95,19 +93,13 @@ export const SizeInputs = ({ ...props }) => {
             name={`size.${index}.available_now`}
           />
 
-          <Button
-            type="button"
-            onClick={() => removeSize(index)}
-          >
+          <Button onClick={() => removeSize(index)} type="button">
             Remove
           </Button>
         </div>
       ))}
 
-      <Button
-        type="button"
-        onClick={() => appendSize({ size: "", available_now: 0 })}
-      >
+      <Button onClick={() => appendSize({ available_now: 0, size: "" })} type="button">
         Add Size
       </Button>
     </div>

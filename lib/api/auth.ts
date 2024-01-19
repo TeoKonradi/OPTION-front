@@ -9,10 +9,9 @@ import { Group, Permission } from "../interfaces/common";
 // ["permission"]
 // ```
 
-
 export interface Login {
-  username: string;
   password: string;
+  username: string;
 }
 // ## Login
 // Address: `{{connection}}/auth/login` [POST]
@@ -25,10 +24,9 @@ export interface Login {
 // }
 // ```
 
-export interface LoginRes{
-  refresh_token: string;
+export interface LoginRes {
   access_token: string;
-
+  refresh_token: string;
 }
 // Answer: `200`, `COOKIE` & `json`
 // ```json
@@ -38,10 +36,9 @@ export interface LoginRes{
 // }
 // ```
 
-export interface LogOutRes{
-  refresh_token: string;
+export interface LogOutRes {
   access_token: string;
-
+  refresh_token: string;
 }
 // ## Logout
 // Address: `{{connection}}/auth/logout` [GET]
@@ -53,7 +50,7 @@ export interface LogOutRes{
 // }
 // ```
 
-export interface Refresh{
+export interface Refresh {
   refresh_token: string;
 }
 // ## Refresh
@@ -66,16 +63,16 @@ export interface Refresh{
 // }
 // ```
 
-export interface MeRequest{
-  // set existing rules
-  username: "admin" | "sudo";
+export interface MeRequest {
+  groups: Group[];
   is_active: boolean;
   is_staff: boolean;
   is_super_user: boolean;
   last_login: number;
-  register: number;
   permissions: Permission[];
-  groups: Group[];
+  register: number;
+  // set existing rules
+  username: "admin" | "sudo";
 }
 // ## Me
 // Address: `{{connection}}/auth/me` [GET]
@@ -105,7 +102,7 @@ export interface MeRequest{
 //   "password": "PASSWORD"
 // }
 // ```
-export interface ChangePass{
+export interface ChangePass {
   old_password: string;
   password: string;
 }

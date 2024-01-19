@@ -1,10 +1,10 @@
 import {
+  UseMutationOptions,
+  UseMutationResult,
   UseQueryOptions,
   UseQueryResult,
   useMutation as useMutationOriginal,
   useQuery as useQueryOriginal,
-  UseMutationOptions,
-  UseMutationResult,
 } from "@tanstack/react-query";
 import { HTTPError } from "ky";
 
@@ -26,7 +26,7 @@ export const useQuery: <
     "initialData"
   > & {
     initialData?: () => undefined;
-  }
+  },
 ) => UseQueryResult<TData, TError> = useQueryOriginal;
 
 export const useMutation: <
@@ -35,7 +35,7 @@ export const useMutation: <
   TVariables = void,
   TContext = unknown,
 >(
-  options: UseMutationOptions<TData, TError, TVariables, TContext>
+  options: UseMutationOptions<TData, TError, TVariables, TContext>,
 ) => UseMutationResult<TData, TError, TVariables, TContext> = useMutationOriginal;
 
 export interface PagedResponse<T> {

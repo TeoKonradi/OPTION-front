@@ -1,6 +1,7 @@
 import { useFormContext } from "react-hook-form";
-import { FormControl, FormField, FormItem, FormMessage } from "../../ui/form";
+
 import { FieldProps } from ".";
+import { FormControl, FormField, FormItem, FormMessage } from "../../ui/form";
 import { Textarea } from "../../ui/textarea";
 
 export const TextareaField: React.FC<FieldProps> = ({
@@ -21,13 +22,13 @@ export const TextareaField: React.FC<FieldProps> = ({
   return (
     <FormField
       render={({ field }) => (
-        <FormItem className="field-with-autofill flex w-full flex-col shadow-xs border-2 border-main items-center justify-center bg-dark-800 px-5 py-1">
+        <FormItem className="field-with-autofill bg-dark-800 flex w-full flex-col items-center justify-center border-2 border-main px-5 py-1 shadow-xs">
           <FormControl>
             <Textarea
               {...props}
-              onInput={adjustHeight}
-              className="border-none px-0 placeholder:text-lg text-xl placeholder:text-dark-200 focus:caret-main py-0 resize-none overflow-hidden"
+              className="placeholder:text-dark-200 resize-none overflow-hidden border-none px-0 py-0 text-xl placeholder:text-lg focus:caret-main"
               disabled={isLoading || disabled}
+              onInput={adjustHeight}
               {...field}
             />
           </FormControl>

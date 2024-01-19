@@ -1,10 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: string[] | string = [];
+const initialState: string | string[] = [];
 
 const FilesSlice = createSlice({
-  name: 'files',
   initialState: initialState,
+  name: "files",
   reducers: {
     addFileUrl: (state, action) => {
       return [...state, action.payload];

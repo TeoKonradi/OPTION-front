@@ -1,4 +1,5 @@
 # Form widget
+
 Json
 
 ```json
@@ -24,9 +25,7 @@ Json
       "query": true,
       "request_path": "users/del",
       "request_type": "post",
-      "request_val": [
-        "id"
-      ]
+      "request_val": ["id"]
     }
   ],
   "form": [
@@ -198,7 +197,7 @@ Json
         "eng": "admin_permissions_groups",
         "lng": "admin_permissions_groups"
       },
-      "val":[
+      "val": [
         {
           "field": "sub_form_field",
           "blank": true,
@@ -211,7 +210,8 @@ Json
             "eng": "admin_permissions_group",
             "lng": "admin_permissions_group"
           },
-          "val": {"widget": "form",
+          "val": {
+            "widget": "form",
             "object": "user",
             "actions": [
               {
@@ -232,88 +232,82 @@ Json
                 "query": true,
                 "request_path": "users/del",
                 "request_type": "post",
-                "request_val": [
-                  "id"
-                ]
+                "request_val": ["id"]
               }
             ],
             "form": [
-            {
-              "field": "auto_field",
-              "blank": false,
-              "read_only": true,
-              "default": 0,
-              "editable": false,
-              "help_text": "No help text for this field for now",
-              "unique": true,
-              "name": {
-                "eng": "ID",
-                "lng": "ID"
+              {
+                "field": "auto_field",
+                "blank": false,
+                "read_only": true,
+                "default": 0,
+                "editable": false,
+                "help_text": "No help text for this field for now",
+                "unique": true,
+                "name": {
+                  "eng": "ID",
+                  "lng": "ID"
+                },
+                "val": 1
               },
-              "val": 1
-            },
-            {
-              "field": "char_field",
-              "blank": false,
-              "read_only": false,
-              "default": "",
-              "editable": true,
-              "help_text": "No help text for this field for now",
-              "unique": true,
-              "name": {
-                "eng": "tag",
-                "lng": "tag"
+              {
+                "field": "char_field",
+                "blank": false,
+                "read_only": false,
+                "default": "",
+                "editable": true,
+                "help_text": "No help text for this field for now",
+                "unique": true,
+                "name": {
+                  "eng": "tag",
+                  "lng": "tag"
+                },
+                "val": "some tag"
               },
-              "val": "some tag"
-            },
-            {
-              "field": "list_field",
-              "list_field": "char_field",
-              "blank": true,
-              "read_only": false,
-              "default": [],
-              "editable": true,
-              "help_text": "No help text for this field for now",
-              "unique": false,
-              "name": {
-                "eng": "permissions",
-                "lng": "permissions"
+              {
+                "field": "list_field",
+                "list_field": "char_field",
+                "blank": true,
+                "read_only": false,
+                "default": [],
+                "editable": true,
+                "help_text": "No help text for this field for now",
+                "unique": false,
+                "name": {
+                  "eng": "permissions",
+                  "lng": "permissions"
+                },
+                "val": [
+                  {
+                    "field": "char_field",
+                    "blank": false,
+                    "read_only": false,
+                    "default": "",
+                    "editable": true,
+                    "help_text": "No help text for this field for now",
+                    "unique": false,
+                    "name": {
+                      "eng": "permission",
+                      "lng": "permission"
+                    },
+                    "val": "PERMISSION"
+                  }
+                ]
               },
-              "val": [
-                {
-                  "field": "char_field",
-                  "blank": false,
-                  "read_only": false,
-                  "default": "",
-                  "editable": true,
-                  "help_text": "No help text for this field for now",
-                  "unique": false,
-                  "name": {
-                    "eng": "permission",
-                    "lng": "permission"
-                  },
-                  "val": "PERMISSION"
-                }
-              ]
-            },
-            {
-              "field": "link_form_field",
-              "blank": true,
-              "read_only": false,
-              "editable": true,
-              "help_text": "No help text for this field for now",
-              "unique": false,
-              "name": {
-                "eng": "admin_users",
-                "lng": "admin_users"
-              },
-              "val": [
-                1,
-                2,
-                4
-              ]
-            }
-          ]
+              {
+                "field": "link_form_field",
+                "blank": true,
+                "read_only": false,
+                "editable": true,
+                "help_text": "No help text for this field for now",
+                "unique": false,
+                "name": {
+                  "eng": "admin_users",
+                  "lng": "admin_users"
+                },
+                "val": [1, 2, 4]
+              }
+            ]
           }
         }
       ]
@@ -611,6 +605,7 @@ Json
 # Huh
 
 ## Field
+
 ```json
 {
   "field": "date_time_field",
@@ -621,13 +616,12 @@ Json
   "help_text": "No help text for this field for now",
   "unique": false,
   "name": {
-      "eng": "created_at",
-      "lng": "created_at"
+    "eng": "created_at",
+    "lng": "created_at"
   },
   "val": "2023-08-15 19:29:02.42501+00"
 }
 ```
-
 
 auto_field
 date_time_field

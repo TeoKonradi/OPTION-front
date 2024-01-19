@@ -1,13 +1,13 @@
 export interface SideBarOption {
-  title: string;
   link: string;
   number?: number;
+  title: string;
 }
 
 export interface OptionsBarEl {
+  link?: string;
   title: string;
   value: string;
-  link?: string;
 }
 
 export interface ItemI {
@@ -15,6 +15,6 @@ export interface ItemI {
   name: string;
   price: string;
   priceSell: string;
-  sizes: number[];
   selected?: boolean | undefined;
+  sizes: number[];
 }

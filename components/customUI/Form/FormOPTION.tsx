@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const FormOPTION = () => {
-  return (
-    <div className=''>Form-OPTION</div>
-  )
-}
+  return <div className="">Form-OPTION</div>;
+};
 
-export default FormOPTION
+export default FormOPTION;

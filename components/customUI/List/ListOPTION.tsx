@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const ListOPTION = () => {
-  return (
-    <div className=''>ListOPTION</div>
-  )
-}
+  return <div className="">ListOPTION</div>;
+};
 
-export default ListOPTION
+export default ListOPTION;

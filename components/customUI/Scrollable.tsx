@@ -1,23 +1,21 @@
 import { ReactNode } from "react";
 
 interface ScrollableProps {
-  scrollable: boolean;
   children: ReactNode;
+  scrollable: boolean;
 }
 
-const Scrollable = ({ scrollable, children }: ScrollableProps) => {
+const Scrollable = ({ children, scrollable }: ScrollableProps) => {
   if (scrollable) {
     return (
-      <div className="flex flex-col w-[900px] mr-4 pl-5 pr-1 py-5 shadow-lg border-2 border-main h-[550px] overflow-hidden">
-        <div className="flex flex-col overflow-y-auto items-center">
-          {children}
-        </div>
+      <div className="mr-4 flex h-[550px] w-[900px] flex-col overflow-hidden border-2 border-main py-5 pl-5 pr-1 shadow-lg">
+        <div className="flex flex-col items-center overflow-y-auto">{children}</div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col w-[900px] mr-4 px-6 py-10 shadow-lg border-2 border-main flex-grow items-center">
+    <div className="mr-4 flex w-[900px] flex-grow flex-col items-center border-2 border-main px-6 py-10 shadow-lg">
       {children}
     </div>
   );

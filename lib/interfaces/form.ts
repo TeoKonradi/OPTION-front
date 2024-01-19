@@ -5,26 +5,26 @@ import { ActionLink, ActionRequest, Name } from "./common";
 // Field
 
 export interface FORMfield {
-      field: string,
-      blank: boolean,
-      read_only: boolean,
-      default: number,
-      editable: false,
-      help_text: string;
-      unique: boolean;
-      name: Name;
-      val: number | string | boolean;
+  blank: boolean;
+  default: number;
+  editable: false;
+  field: string;
+  help_text: string;
+  name: Name;
+  read_only: boolean;
+  unique: boolean;
+  val: boolean | number | string;
 }
 
 ///////////////////////////////////////
 
 // Form
 
-export interface FORM{
-  widget: "form";
-  object: string;
-  actions: ActionLink[] | ActionRequest[] | ActionLink[] & ActionRequest[];
+export interface FORM {
+  actions: ActionLink[] | (ActionLink[] & ActionRequest[]) | ActionRequest[];
   form: any;
+  object: string;
+  widget: "form";
 }
 
 // # Form widget
@@ -63,15 +63,15 @@ export interface FORM{
 //   "form": [
 
 export interface AutoField {
-      field: "auto_field";
-      blank: boolean;
-      read_only: boolean;
-      default: number;
-      editable: boolean;
-      help_text: string;
-      unique: boolean;
-      name: Name;
-      val: number;
+  blank: boolean;
+  default: number;
+  editable: boolean;
+  field: "auto_field";
+  help_text: string;
+  name: Name;
+  read_only: boolean;
+  unique: boolean;
+  val: number;
 }
 
 //     {
@@ -90,15 +90,15 @@ export interface AutoField {
 //     },
 
 export interface DateTimeField {
-  field: "date_time_field";
   blank: boolean;
-  read_only: boolean;
   default: string;
   editable: boolean;
+  field: "date_time_field";
   help_text: string;
-  unique: boolean;
   name: Name;
-  val: string | null;
+  read_only: boolean;
+  unique: boolean;
+  val: null | string;
 }
 
 //     {
@@ -147,14 +147,14 @@ export interface DateTimeField {
 //     },
 
 export interface CharField {
-  field: "char_field";
   blank: boolean;
-  read_only: boolean;
   default: string;
   editable: boolean;
+  field: "char_field";
   help_text: string;
-  unique: boolean;
   name: Name;
+  read_only: boolean;
+  unique: boolean;
   val: string;
 }
 //     {
@@ -188,17 +188,23 @@ export interface CharField {
 //     },
 
 export interface ListField {
-  field: "list_field";
-  list_field: "char_field" | "bool_field" | "sub_form_field" | "auto_field" | "date_time_field" | "list_field";
   blank: boolean;
-  read_only: boolean;
   // write single fields
   default: any[];
   editable: boolean;
+  field: "list_field";
   help_text: string;
-  unique: boolean;
+  list_field:
+    | "auto_field"
+    | "bool_field"
+    | "char_field"
+    | "date_time_field"
+    | "list_field"
+    | "sub_form_field";
   name: Name;
-  val: (AutoField| DateTimeField | ListField | CharField | BoolField)[];
+  read_only: boolean;
+  unique: boolean;
+  val: (AutoField | BoolField | CharField | DateTimeField | ListField)[];
 }
 
 //     {
@@ -232,16 +238,16 @@ export interface ListField {
 //       ]
 //     },
 
-export interface BoolField{
-      field: "bool_field",
-      blank: boolean;
-      read_only: boolean;
-      default: boolean;
-      editable: boolean;
-      help_text: string;
-      unique: boolean;
-      name: Name;
-      val: boolean;
+export interface BoolField {
+  blank: boolean;
+  default: boolean;
+  editable: boolean;
+  field: "bool_field";
+  help_text: string;
+  name: Name;
+  read_only: boolean;
+  unique: boolean;
+  val: boolean;
 }
 //     {
 //       "field": "bool_field",
@@ -301,21 +307,21 @@ export interface BoolField{
 //         "lng": "admin_permissions_groups"
 //       },
 //       "val":[
-  export interface SubFormField {
-    field: "sub_form_field";
-    blank: boolean;
-    read_only: boolean;
-    editable: boolean;
-    help_text: string;
-    unique: boolean;
-    link: boolean;
-    name: Name;
-    val: {
-      widget: "form";
-      object: string;
-      actions: ( ActionLink | ActionRequest )[];
-    };
-  }
+export interface SubFormField {
+  blank: boolean;
+  editable: boolean;
+  field: "sub_form_field";
+  help_text: string;
+  link: boolean;
+  name: Name;
+  read_only: boolean;
+  unique: boolean;
+  val: {
+    actions: (ActionLink | ActionRequest)[];
+    object: string;
+    widget: "form";
+  };
+}
 //         {
 //           "field": "sub_form_field",
 //           "blank": true,
@@ -415,33 +421,33 @@ export interface BoolField{
 //               ]
 //             },
 
-export interface LinkFormField{
-    field: "link_form_field",
-    blank: true,
-    read_only: false,
-    editable: true,
-    help_text: "No help text for this field for now",
-    unique: false,
-    name: Name;
-    val: number[]
+export interface LinkFormField {
+  blank: true;
+  editable: true;
+  field: "link_form_field";
+  help_text: "No help text for this field for now";
+  name: Name;
+  read_only: false;
+  unique: false;
+  val: number[];
 }
-            // {
-            //   "field": "link_form_field",
-            //   "blank": true,
-            //   "read_only": false,
-            //   "editable": true,
-            //   "help_text": "No help text for this field for now",
-            //   "unique": false,
-            //   "name": {
-            //     "eng": "admin_users",
-            //     "lng": "admin_users"
-            //   },
-            //   "val": [
-            //     1,
-            //     2,
-            //     4
-            //   ]
-            // }
+// {
+//   "field": "link_form_field",
+//   "blank": true,
+//   "read_only": false,
+//   "editable": true,
+//   "help_text": "No help text for this field for now",
+//   "unique": false,
+//   "name": {
+//     "eng": "admin_users",
+//     "lng": "admin_users"
+//   },
+//   "val": [
+//     1,
+//     2,
+//     4
+//   ]
+// }
 //           ]
 //           }
 //         }
@@ -619,125 +625,124 @@ export interface LinkFormField{
 //                "lng": "access_token"
 //              },
 //              "val": [
-  //             {
-  //               "field": "auto_field",
-  //               "blank": false,
-  //               "read_only": true,
-  //               "default": 0,
-  //               "editable": false,
-  //               "help_text": "No help text for this field for now",
-  //               "unique": true,
-  //               "name": {
-  //                 "eng": "ID",
-  //                 "lng": "ID"
-  //               },
-  //               "val": 1
-  //             },
-  //             {
-  //               "field": "date_time_field",
-  //               "blank": true,
-  //               "read_only": true,
-  //               "default": "2023-08-15 19:29:02.42501+00",
-  //               "editable": false,
-  //               "help_text": "No help text for this field for now",
-  //               "unique": false,
-  //               "name": {
-  //                 "eng": "created_at",
-  //                 "lng": "created_at"
-  //               },
-  //               "val": "2023-08-15 19:29:02.42501+00"
-  //             },
-  //             {
-  //               "field": "date_time_field",
-  //               "blank": true,
-  //               "read_only": true,
-  //               "default": "2023-08-15 19:29:02.42501+00",
-  //               "editable": false,
-  //               "help_text": "No help text for this field for now",
-  //               "unique": false,
-  //               "name": {
-  //                 "eng": "updated_at",
-  //                 "lng": "updated_at"
-  //               },
-  //               "val": "2023-08-15 19:29:02.42501+00"
-  //             },
-  //             {
-  //               "field": "date_time_field",
-  //               "blank": true,
-  //               "read_only": true,
-  //               "default": null,
-  //               "editable": false,
-  //               "help_text": "No help text for this field for now",
-  //               "unique": false,
-  //               "name": {
-  //                 "eng": "deleted_at",
-  //                 "lng": "deleted_at"
-  //               },
-  //               "val": null
-  //             },
-  //             {
-  //               "field": "char_field",
-  //               "blank": false,
-  //               "read_only": false,
-  //               "default": "",
-  //               "editable": true,
-  //               "help_text": "No help text for this field for now",
-  //               "unique": true,
-  //               "name": {
-  //                 "eng": "token",
-  //                 "lng": "token"
-  //               },
-  //               "val": "TOKEN"
-  //             },
-  //             {
-  //               "field": "bool_field",
-  //               "blank": false,
-  //               "read_only": false,
-  //               "default": false,
-  //               "editable": true,
-  //               "help_text": "No help text for this field for now",
-  //               "unique": false,
-  //               "name": {
-  //                 "eng": "expired",
-  //                 "lng": "expired"
-  //               },
-  //               "val": false
-  //             },
-  //             {
-  //               "field": "char_field",
-  //               "blank": false,
-  //               "read_only": false,
-  //               "default": "",
-  //               "editable": true,
-  //               "help_text": "No help text for this field for now",
-  //               "unique": true,
-  //               "name": {
-  //                 "eng": "expired_reason",
-  //                 "lng": "expired_reason"
-  //               },
-  //               "val": "TOKEN"
-  //             },
-  //             {
-  //               "field": "bool_field",
-  //               "blank": false,
-  //               "read_only": false,
-  //               "default": false,
-  //               "editable": true,
-  //               "help_text": "No help text for this field for now",
-  //               "unique": false,
-  //               "name": {
-  //                 "eng": "show",
-  //                 "lng": "show"
-  //               },
-  //               "val": false
-  //             }
+//             {
+//               "field": "auto_field",
+//               "blank": false,
+//               "read_only": true,
+//               "default": 0,
+//               "editable": false,
+//               "help_text": "No help text for this field for now",
+//               "unique": true,
+//               "name": {
+//                 "eng": "ID",
+//                 "lng": "ID"
+//               },
+//               "val": 1
+//             },
+//             {
+//               "field": "date_time_field",
+//               "blank": true,
+//               "read_only": true,
+//               "default": "2023-08-15 19:29:02.42501+00",
+//               "editable": false,
+//               "help_text": "No help text for this field for now",
+//               "unique": false,
+//               "name": {
+//                 "eng": "created_at",
+//                 "lng": "created_at"
+//               },
+//               "val": "2023-08-15 19:29:02.42501+00"
+//             },
+//             {
+//               "field": "date_time_field",
+//               "blank": true,
+//               "read_only": true,
+//               "default": "2023-08-15 19:29:02.42501+00",
+//               "editable": false,
+//               "help_text": "No help text for this field for now",
+//               "unique": false,
+//               "name": {
+//                 "eng": "updated_at",
+//                 "lng": "updated_at"
+//               },
+//               "val": "2023-08-15 19:29:02.42501+00"
+//             },
+//             {
+//               "field": "date_time_field",
+//               "blank": true,
+//               "read_only": true,
+//               "default": null,
+//               "editable": false,
+//               "help_text": "No help text for this field for now",
+//               "unique": false,
+//               "name": {
+//                 "eng": "deleted_at",
+//                 "lng": "deleted_at"
+//               },
+//               "val": null
+//             },
+//             {
+//               "field": "char_field",
+//               "blank": false,
+//               "read_only": false,
+//               "default": "",
+//               "editable": true,
+//               "help_text": "No help text for this field for now",
+//               "unique": true,
+//               "name": {
+//                 "eng": "token",
+//                 "lng": "token"
+//               },
+//               "val": "TOKEN"
+//             },
+//             {
+//               "field": "bool_field",
+//               "blank": false,
+//               "read_only": false,
+//               "default": false,
+//               "editable": true,
+//               "help_text": "No help text for this field for now",
+//               "unique": false,
+//               "name": {
+//                 "eng": "expired",
+//                 "lng": "expired"
+//               },
+//               "val": false
+//             },
+//             {
+//               "field": "char_field",
+//               "blank": false,
+//               "read_only": false,
+//               "default": "",
+//               "editable": true,
+//               "help_text": "No help text for this field for now",
+//               "unique": true,
+//               "name": {
+//                 "eng": "expired_reason",
+//                 "lng": "expired_reason"
+//               },
+//               "val": "TOKEN"
+//             },
+//             {
+//               "field": "bool_field",
+//               "blank": false,
+//               "read_only": false,
+//               "default": false,
+//               "editable": true,
+//               "help_text": "No help text for this field for now",
+//               "unique": false,
+//               "name": {
+//                 "eng": "show",
+//                 "lng": "show"
+//               },
+//               "val": false
+//             }
 //             ]
-  //         }
+//           }
 //         ]
 //       }
 //    ]
 //  }
-
 
 // # Huh
 // Field
@@ -756,8 +761,6 @@ export interface LinkFormField{
 //   },
 //   "val": "2023-08-15 19:29:02.42501+00"
 // }
-
-
 
 // Existing fields
 // auto_field

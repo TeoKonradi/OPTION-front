@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { OptionsBarEl } from "../lib/consts";
 
 type OptionsBarState = {
-  items: OptionsBarEl[];
   deletePressed: boolean;
+  items: OptionsBarEl[];
 };
 
 const PERMANENT_ITEMS: OptionsBarEl[] = [
@@ -14,32 +15,32 @@ const PERMANENT_ITEMS: OptionsBarEl[] = [
 ];
 
 const initialState: OptionsBarState = {
-  items: PERMANENT_ITEMS,
   deletePressed: false,
+  items: PERMANENT_ITEMS,
 };
 
 const OptionsBarSlice = createSlice({
-  name: "optionBar",
   initialState,
+  name: "optionBar",
   reducers: {
-    initializeItemsOptionBar: (state, action) => {
-      state.items = [...PERMANENT_ITEMS, ...action.payload];
-    },
-    resetOptionsBarState: () => {
-      return initialState;
-    },
     handleDeletePress: (state) => {
       state.deletePressed = true;
     },
+    initializeItemsOptionBar: (state, action) => {
+      state.items = [...PERMANENT_ITEMS, ...action.payload];
+    },
     resetDeletePress: (state) => {
       state.deletePressed = false;
+    },
+    resetOptionsBarState: () => {
+      return initialState;
     },
   },
 });
 
 export const {
-  initializeItemsOptionBar,
   handleDeletePress,
+  initializeItemsOptionBar,
   resetDeletePress,
   resetOptionsBarState,
 } = OptionsBarSlice.actions;

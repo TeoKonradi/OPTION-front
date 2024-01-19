@@ -5,16 +5,16 @@ import { Name } from "../interfaces/common";
 // ## Ping
 // Address: `{{connection}}/ping`
 
-export interface ProtocolPing { 
-  status: "success" | "not_success";
-  version: string;
-  domain: string;
-  ssl: boolean;
+export interface ProtocolPing {
   active: boolean;
-  extensions: any[] ;
+  domain: string;
+  extensions: any[];
+  ssl: boolean;
+  status: "not_success" | "success";
+  version: string;
 }
 
-// Answer: `200` 
+// Answer: `200`
 // ```json
 // {
 //   "status": "success",
@@ -32,8 +32,6 @@ export interface ProtocolPing {
 // - `ssl` - does backend have ssl
 // - `active` - does CRM is active now, if not, than show error
 // - `extensions` - list of the extensions that frontend must have, if it doesn't have it all them show error
-
-
 
 // ## Sidebar
 // Address: `{{connection}}/sidebar`
@@ -65,23 +63,22 @@ export interface ProtocolPing {
 // ]
 // ```
 
-export interface SideBarPage{
+export interface SideBarPage {
+  accesses: any[];
+  name: Name;
+  path: string;
   place?: number;
   type: "page";
-  path: string;
-  name: Name;
-  accesses: any[];
-  }
+}
 
 export interface SideBarGroup {
-    type: "group";
-    path: string;
-    name: Name;
-    accesses: any[];
-    // page with number ))
-    pages: SideBarPage[];
-  }
-
+  accesses: any[];
+  name: Name;
+  // page with number ))
+  pages: SideBarPage[];
+  path: string;
+  type: "group";
+}
 
 // ### Explanation
 // - `type` - object type, may be either or `page` or either `group` of pages

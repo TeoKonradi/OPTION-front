@@ -1,11 +1,12 @@
 import { useFormContext } from "react-hook-form";
-import { useBrands, Brand } from "../../../lib/api";
-import { ErrorEmptyStatus, Loading } from "../Errors&Messages/Error&otherStuff";
+
+import { Brand, useBrands } from "../../../lib/api";
 import { cn } from "../../ui";
+import { ErrorEmptyStatus, Loading } from "../Errors&Messages/Error&otherStuff";
 
 export const BrandSelection: React.FC = () => {
   const { data, isError, isSuccess } = useBrands();
-  const { watch, setValue } = useFormContext();
+  const { setValue, watch } = useFormContext();
   const selectedBrands = watch("brand", []);
 
   const toggleSelection = (brandId: number) => {
@@ -27,16 +28,16 @@ export const BrandSelection: React.FC = () => {
 
   return (
     <div className="flex w-[490px] overflow-x-hidden">
-      <div className="overflow-x-scroll flex gap-2">
+      <div className="flex gap-2 overflow-x-scroll">
         {data.items.map((brand: Brand) => {
           const brandSelected = selectedBrands.includes(brand.ID);
           return (
             <div
-              key={brand.ID}
               className={cn(
-                "shadow-sm px-2 py-1.5 m-1.5 border-2 border-gray-800 cursor-pointer",
-                brandSelected ? "bg-gray-800 text-white" : "bg-white text-gray-800"
+                "m-1.5 cursor-pointer border-2 border-gray-800 px-2 py-1.5 shadow-sm",
+                brandSelected ? "bg-gray-800 text-white" : "bg-white text-gray-800",
               )}
+              key={brand.ID}
               onClick={() => toggleSelection(brand.ID)}
             >
               {brand.name}

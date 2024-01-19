@@ -1,24 +1,25 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import ToogleScroll from './ToogleScrollSlice';
-import ItemsListSlice from './itemsListSlice';
-import OptionsBarSlice from './OptionsBarSlice';
-import PageDescriptionSlice from './PageDescriptionSlice';
-import AccessTokenSlice from './AccessTokenSlice';
-import LoginStatus from './LoginStatus';
-import FilesSlice from './FilesSlice';
-import SizeSlice from './SizeSlice';
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
+import AccessTokenSlice from "./AccessTokenSlice";
+import FilesSlice from "./FilesSlice";
+import LoginStatus from "./LoginStatus";
+import OptionsBarSlice from "./OptionsBarSlice";
+import PageDescriptionSlice from "./PageDescriptionSlice";
+import SizeSlice from "./SizeSlice";
+import ToogleScroll from "./ToogleScrollSlice";
+import ItemsListSlice from "./itemsListSlice";
 // import storage from "redux-persist/lib/storage";
 // import { persistReducer, persistStore } from "redux-persist";
 
 const rootReducer = combineReducers({
-  toogleScroll: ToogleScroll,
-  itemsList: ItemsListSlice,
-  optionsBar: OptionsBarSlice,
-  sizes: SizeSlice,
-  pageDesc: PageDescriptionSlice,
   accessToken: AccessTokenSlice,
-  loginStatus: LoginStatus,
   files: FilesSlice,
+  itemsList: ItemsListSlice,
+  loginStatus: LoginStatus,
+  optionsBar: OptionsBarSlice,
+  pageDesc: PageDescriptionSlice,
+  sizes: SizeSlice,
+  toogleScroll: ToogleScroll,
 });
 
 // const persistConfig = {

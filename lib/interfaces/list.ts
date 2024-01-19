@@ -5,16 +5,16 @@ import { ActionLink, ActionRequest } from "./common";
 
 // Example
 // {
-// "id": "int", 
-// "username": "string", 
-// "super_user": "bool", 
-// "staff_user": "bool", 
+// "id": "int",
+// "username": "string",
+// "super_user": "bool",
+// "staff_user": "bool",
 // "last_login": "date"
 // }
 
 interface ListContent {
-  id: number;
   [key: string]: any;
+  id: number;
 }
 
 // - `key` - only string value, any length
@@ -38,9 +38,9 @@ interface ListContent {
 //   }
 
 interface ListPagination {
-  pagination: boolean,
-  page: number,
-  pages: number,
+  page: number;
+  pages: number;
+  pagination: boolean;
 }
 
 ////////////////////////////////
@@ -89,13 +89,13 @@ interface ListPagination {
 //   }
 // }
 
-export interface ListItem{
-  widget: "list";
-  object: string;
-  actions: ActionLink[] | ActionRequest[] | ActionLink[] & ActionRequest[];
-  content_type: ListContent;
+export interface ListItem {
+  actions: ActionLink[] | (ActionLink[] & ActionRequest[]) | ActionRequest[];
   content: ListContent[];
-  pagination: ListPagination
+  content_type: ListContent;
+  object: string;
+  pagination: ListPagination;
+  widget: "list";
 }
 
 // ## Explanation
@@ -105,4 +105,3 @@ export interface ListItem{
 // - `content_type` - fields ant fields types (columns)
 // - `content` - list of the objects
 // - `pagination` - pagination data, more details below
-

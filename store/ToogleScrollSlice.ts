@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const ScrollSlice = createSlice({
-  name: "scrollStatus",
   initialState: false,
+  name: "scrollStatus",
   reducers: {
     toggleScrollState(state) {
       return !state;

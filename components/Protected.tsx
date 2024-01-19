@@ -1,21 +1,22 @@
-"use client"
+"use client";
 
-import { useMyProfile } from '@/{ lib }/( api )';
+import { useMyProfile } from "@/{ lib }/( api )";
+
+import Login from "@/app/(protected)/(auth)/Login";
+import SideBar from "@/components/SideBar";
 import {
   ErrorEmptyStatus,
   Loading,
-} from '@/components/customUI/Errors&Messages/Error&otherStuff';
-import SideBar from '@/components/SideBar';
-import Login from '@/app/( protected )/(auth)/Login';
+} from "@/components/customUI/Errors&Messages/Error&otherStuff";
 
 export const Protected = ({ children }: { children: React.ReactNode }) => {
-  const { isError, isSuccess, isLoading } = useMyProfile();
+  const { isError, isLoading, isSuccess } = useMyProfile();
 
-  console.log('Protected: isError', isError);
+  console.log("Protected: isError", isError);
 
   if (isError) {
     return (
-      <div className="flex justify-center items-center w-full h-[70vh]">
+      <div className="flex h-[70vh] w-full items-center justify-center">
         <Login />
       </div>
     );
@@ -27,13 +28,11 @@ export const Protected = ({ children }: { children: React.ReactNode }) => {
 
   if (isSuccess) {
     return (
-      <div className="flex justify-between w-full">
+      <div className="flex w-full justify-between">
         <div className="sticky top-[100px] ml-6 h-[calc(100vh-100px)]">
           <SideBar />
         </div>
-        <div className="flex flex-col px-5 relative overflow-y-auto">
-          {children}
-        </div>
+        <div className="relative flex flex-col overflow-y-auto px-5">{children}</div>
       </div>
     );
   }

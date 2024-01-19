@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const AccessSlice = createSlice({
-  name: "AccessToken",
   initialState: false,
+  name: "AccessToken",
   reducers: {
     setAccessToken: (action: any) => {
       return action.payload;
