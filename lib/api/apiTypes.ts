@@ -25,7 +25,7 @@ export const useQuery: <
     UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>,
     "initialData"
   > & {
-    initialData?: () => undefined;
+    initialData?: () => undefined | TData;
   },
 ) => UseQueryResult<TData, TError> = useQueryOriginal;
 

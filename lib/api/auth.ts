@@ -1,7 +1,6 @@
 // # Authentication
 
 import { Group, Permission } from "../interfaces/common";
-
 // ## Permissions
 // Address: `{{connection}}/auth/permissions` [GET]
 // Answer `200`, `json`
@@ -9,7 +8,7 @@ import { Group, Permission } from "../interfaces/common";
 // ["permission"]
 // ```
 
-export interface Login {
+export interface LoginReq {
   password: string;
   username: string;
 }
@@ -23,7 +22,6 @@ export interface Login {
 //   "password": "PASSWORD"
 // }
 // ```
-
 export interface LoginRes {
   access_token: string;
   refresh_token: string;
@@ -35,7 +33,6 @@ export interface LoginRes {
 //     "access_token": "ACCESS_TOKEN"
 // }
 // ```
-
 export interface LogOutRes {
   access_token: string;
   refresh_token: string;
@@ -50,7 +47,7 @@ export interface LogOutRes {
 // }
 // ```
 
-export interface Refresh {
+export interface RefreshRes {
   refresh_token: string;
 }
 // ## Refresh
@@ -63,7 +60,7 @@ export interface Refresh {
 // }
 // ```
 
-export interface MeRequest {
+export interface MeRes {
   groups: Group[];
   is_active: boolean;
   is_staff: boolean;
@@ -92,9 +89,12 @@ export interface MeRequest {
 // ```
 // Permissions field already include all groups permissions
 
+export interface ChangePassReq {
+  old_password: string;
+  password: string;
+}
 // ## Change password
 // Address: `{{connection}}/auth/change/password` [GET]
-
 // Require: `LOGIN` & `json`
 // ```json
 // {
@@ -102,9 +102,8 @@ export interface MeRequest {
 //   "password": "PASSWORD"
 // }
 // ```
-export interface ChangePass {
-  old_password: string;
-  password: string;
+export interface ChangePassRes {
+  status: "success";
 }
 // Answer: `200`, `json`
 // ```json
